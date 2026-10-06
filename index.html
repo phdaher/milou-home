@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milou Home</title>
+<meta name="description" content="Milou Home: porcelana e bordados para mesa posta.">
+<meta name="theme-color" content="#8e99af">
+<meta property="og:title" content="Milou Home">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4efe9;
+    --paper-deep: #ebe4da;
+    --periwinkle: #8e99af;
+    --burgundy: #5c081f;
+    --ink: #3b2a2e;
+    --muted: #8a7f7a;
+    --rule: #d9cfc3;
+    --red: #882a32;
+    --blue: #364f5f;
+    --green: #535c3f;
+    --display: "Cormorant Garamond", "Times New Roman", serif;
+    --body: "EB Garamond", Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 12px; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+
+  /* ---------- Navbar ---------- */
+  .topbar {
+    background: var(--periwinkle);
+    box-shadow: 0 1px 0 rgba(60, 20, 35, .12);
+  }
+  .topbar-inner {
+    max-width: 1120px; margin: 0 auto;
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand .emblem-h { height: 46px; width: auto; }
+  .brand .wordmark { height: 35px; width: auto; }
+  .topbar ul { list-style: none; display: flex; align-items: center; }
+  .topbar li + li { border-left: 1px solid rgba(92, 8, 31, .45); margin-left: clamp(12px, 2.6vw, 24px); padding-left: clamp(12px, 2.6vw, 24px); }
+  .topbar a.link {
+    font-family: var(--display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--burgundy);
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+    white-space: nowrap;
+  }
+  .topbar a.link:hover, .topbar a.link:focus-visible { border-bottom-color: currentColor; }
+  .topbar-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 28px); }
+  .lang { display: flex; align-items: center; margin-left: 4px; }
+  .lang button {
+    background: none; border: 0; cursor: pointer;
+    font-family: var(--display); font-weight: 500; font-size: 11px; letter-spacing: .14em;
+    color: var(--burgundy); opacity: .42; padding: 6px 3px;
+    transition: opacity .2s;
+  }
+  .lang button + button::before { content: "/"; margin-right: 6px; opacity: .6; pointer-events: none; }
+  .lang button[aria-pressed="true"] { opacity: .85; }
+  .lang button:hover, .lang button:focus-visible { opacity: 1; }
+  @media (max-width: 480px) {
+    .topbar-inner { padding: 10px 16px; }
+    .brand .emblem-h { height: 38px; }
+    .brand .wordmark { height: 29px; }
+    .topbar a.link { font-size: 10.5px; letter-spacing: .1em; }
+    .topbar-right { gap: 10px; }
+    .topbar li + li { margin-left: 9px; padding-left: 9px; }
+    .lang button { font-size: 9.5px; letter-spacing: .1em; padding: 6px 2px; }
+    .lang { margin-left: 0; }
+    .brand { gap: 7px; }
+    .brand .emblem-h { height: 34px; }
+    .brand .wordmark { height: 26px; }
+  }
+
+  @media (max-width: 380px) {
+    .topbar-inner { padding: 10px 12px; gap: 8px; }
+    .brand .emblem-h { height: 30px; }
+    .brand .wordmark { height: 23px; }
+    .topbar a.link { font-size: 9.5px; letter-spacing: .06em; }
+    .lang button { font-size: 9px; letter-spacing: .06em; }
+    .topbar li + li { margin-left: 7px; padding-left: 7px; }
+    .topbar-right { gap: 7px; }
+  }
+
+  /* ---------- Quem somos / O que fazemos ---------- */
+  .about { padding: 40px 0 24px; border-bottom: 1px solid var(--rule); }
+  .story-row {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .story-row::before {
+    content: "";
+    position: absolute; z-index: -1;
+    width: 250px; height: 318px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: url("emblem-dark.png") center / contain no-repeat;
+    opacity: .03;
+  }
+  .about .label {
+    font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: .32em;
+    padding-left: .32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .about h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.02;
+    letter-spacing: .005em;
+    color: var(--burgundy);
+    margin-top: 14px;
+  }
+  .about h2::after { content: ""; display: block; width: 44px; height: 2px; background: var(--burgundy); margin: 22px auto 0; }
+  .about .body p {
+    font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: .015em;
+    color: var(--ink);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .about .body em { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.22em; line-height: 0; color: var(--burgundy); letter-spacing: 0; }
+  .about .sign {
+    margin-top: 22px !important;
+    font-family: var(--display) !important;
+    font-style: italic;
+    font-weight: 500 !important;
+    font-size: 26px !important;
+    color: var(--burgundy) !important;
+    line-height: 1.2 !important;
+  }
+  .ornament { display: flex; align-items: center; gap: 22px; padding: 6px 0; }
+  .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .ornament img { width: 30px; }
+
+  @media (min-width: 860px) {
+    .story-row { grid-template-columns: 5fr 7fr; gap: 0; align-items: center; text-align: left; padding: 56px 0; }
+    .story-row::before { width: 300px; height: 381px; left: 6%; transform: translateY(-50%); }
+    .story-row.flip { grid-template-columns: 7fr 5fr; }
+    .story-row.flip::before { left: auto; right: 6%; }
+    .story-row.flip .head { order: 2; padding-left: clamp(32px, 5vw, 72px); }
+    .story-row.flip .body { order: 1; padding-right: clamp(32px, 5vw, 72px); border-right: 1px solid var(--rule); }
+    .story-row:not(.flip) .head { padding-right: clamp(32px, 5vw, 72px); }
+    .story-row:not(.flip) .body { padding-left: clamp(32px, 5vw, 72px); border-left: 1px solid var(--rule); }
+    .about h2::after { margin-left: 0; }
+    .about .label { padding-left: 0; }
+    .about .body p { margin: 0; }
+  }
+
+  /* ---------- Coleções ---------- */
+  main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .collection { padding: 52px 0 56px; border-bottom: 1px solid var(--rule); }
+  .collection:last-of-type { border-bottom: 0; }
+  .c-red   { --accent: var(--red); }
+  .c-blue  { --accent: var(--blue); }
+  .c-green { --accent: var(--green); }
+
+  .c-head { text-align: center; margin-bottom: 36px; }
+  .label {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .34em;
+    padding-left: .34em;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .c-head h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(44px, 8vw, 76px);
+    line-height: 1.1;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .c-head .rule { width: 34px; height: 2px; background: var(--accent); margin: 14px auto 0; }
+
+  .c-body { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: start; }
+  @media (min-width: 900px) {
+    .c-body { grid-template-columns: 5fr 7fr; gap: 64px; }
+    .c-body.flip { grid-template-columns: 7fr 5fr; }
+    .c-body.flip .photo { order: 2; }
+    .photo { position: sticky; top: 24px; }
+  }
+  .photo img { width: 100%; border-radius: 3px; box-shadow: 0 10px 30px rgba(60,30,30,.16); cursor: zoom-in; }
+
+  .group + .group { margin-top: 52px; }
+  .group-title {
+    display: flex; align-items: center; gap: 18px;
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 26px;
+  }
+  .group-title::before, .group-title::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  .items { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 24px; }
+  .item { text-align: center; }
+  .item.wide { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+  @media (max-width: 520px) { .item.wide { max-width: 70%; } }
+  .item .pic {
+    background: var(--paper);
+    border: 0; padding: 0; width: 100%;
+    cursor: zoom-in;
+  }
+  .item img { width: 100%; transition: transform .35s ease; }
+  .item .pic:hover img { transform: scale(1.03); }
+  .item h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 23px;
+    color: var(--accent);
+    margin-top: 6px;
+    line-height: 1.2;
+  }
+  .item .spec {
+    margin-top: 2px;
+    font-size: 13px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .items.two .pic { aspect-ratio: 4 / 5; }
+  .items.two .item img { width: 100%; height: 100%; object-fit: contain; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Rodapé ---------- */
+  footer {
+    background: var(--burgundy);
+    color: var(--paper);
+    text-align: center;
+    padding: 64px 20px 40px;
+  }
+  footer .logo-c { width: 150px; margin: 0 auto 28px; }
+  footer .tagline {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    padding-left: .3em;
+    font-size: 13px;
+    opacity: .85;
+  }
+  .contacts { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 12px 24px 12px 26px;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    transition: background .2s, color .2s;
+  }
+  .btn:hover { background: var(--paper); color: var(--burgundy); }
+  .copy { margin-top: 40px; font-size: 14px; opacity: .6; }
+
+  /* ---------- Zoom ---------- */
+  dialog.zoom {
+    border: 0; background: transparent; padding: 0;
+    max-width: 94vw; max-height: 94vh; margin: auto; overflow: visible;
+  }
+  dialog.zoom::backdrop { background: rgba(30,8,16,.82); }
+  dialog.zoom img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; border-radius: 3px; background: var(--paper); }
+  dialog.zoom form { position: absolute; top: -40px; right: 0; }
+  dialog.zoom button {
+    background: none; border: 0; color: #fff; font-size: 30px; cursor: pointer; line-height: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .item img { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topo">
+  <div class="topbar-inner">
+    <a class="brand" href="#topo" aria-label="Milou Home, voltar ao topo" data-i18n-aria="brand.aria">
+      <img class="emblem-h" src="emblem.png" alt="">
+      <img class="wordmark" src="wordmark.png" alt="Milou Home">
+    </a>
+    <div class="topbar-right">
+    <nav aria-label="Seções" data-i18n-aria="nav.aria">
+      <ul>
+        <li><a class="link" href="#quem-somos" data-i18n="nav.about">Quem somos</a></li>
+        <li><a class="link" href="#vermelha" data-i18n="nav.collections">Coleções</a></li>
+      </ul>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="about" id="sobre">
+    <article class="story-row" id="quem-somos">
+      <div class="head">
+        <p class="label" data-i18n="about.label1">Quem somos</p>
+        <h2>Hi, we’re<br>Milou</h2>
+      </div>
+      <div class="body">
+        <p data-i18n-html="about.p1">A união de Camila e Luísa, duas amigas que compartilham a paixão por cores, estampas, detalhes e, claro, objetos de mesa, deu origem à Milou — uma marca que reúne todas essas inspirações em um só lugar. As peças são criadas a partir de referências que refletem o olhar e o estilo das fundadoras, como se fossem pensadas para as próprias mesas, tornando a Milou <em>uma verdadeira extensão de quem elas são.</em></p>
+        <p class="sign">Camila &amp; Luísa</p>
+      </div>
+    </article>
+
+    <div class="ornament" aria-hidden="true"><img src="emblem.png" alt=""></div>
+
+    <article class="story-row flip" id="o-que-fazemos">
+      <div class="head">
+        <p class="label" data-i18n="about.label2">O que fazemos</p>
+        <h2>Heartfelt<br>tablewear</h2>
+      </div>
+      <div class="body">
+        <p data-i18n-html="about.p2">Criamos objetos de decoração pra mesa com o cuidado nos detalhes e o desejo de transformar momentos simples em experiências especiais. Acreditamos que a mesa vai além da função: ela é <em>um espaço de encontro, afeto e expressão.</em> Por isso, pensamos cada peça na harmonia entre cores, estampas e texturas, unindo beleza e funcionalidade.</p>
+      </div>
+    </article>
+  </section>
+
+
+  <!-- VERMELHA -->
+  <section class="collection c-red" id="vermelha">
+    <div class="c-head">
+      <p class="label" data-i18n="coll.label">Coleção</p>
+      <h2 data-i18n="coll.red">Vermelha</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="c-body">
+      <div class="photo"><img src="img/hero-vermelha.jpg" alt="Mesa posta com a coleção Vermelha de porcelana" data-i18n-alt="alt.hero.red" loading="lazy" data-zoom></div>
+      <div>
+        <div class="group">
+          <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
+          <div class="items">
+            <div class="item" data-color="red" data-kind="dinner"><button class="pic" data-zoom-src="img/vermelha-raso.jpg" aria-label="Ampliar prato raso"><img src="img/vermelha-raso.jpg" alt="Prato raso vermelho" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
+            <div class="item" data-color="red" data-kind="dessert"><button class="pic" data-zoom-src="img/vermelha-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/vermelha-sobremesa.jpg" alt="Prato de sobremesa vermelho" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item wide" data-color="red" data-kind="cup"><button class="pic" data-zoom-src="img/vermelha-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/vermelha-xicara.jpg" alt="Xícara com pires vermelha" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AZUL -->
+  <section class="collection c-blue" id="azul">
+    <div class="c-head">
+      <p class="label" data-i18n="coll.label">Coleção</p>
+      <h2 data-i18n="coll.blue">Azul</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="c-body flip">
+      <div class="photo"><img src="img/hero-azul.jpg" alt="Mesa posta com a coleção Azul de porcelana e bordados" data-i18n-alt="alt.hero.blue" loading="lazy" data-zoom></div>
+      <div>
+        <div class="group">
+          <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
+          <div class="items">
+            <div class="item" data-color="blue" data-kind="dinner"><button class="pic" data-zoom-src="img/azul-raso.jpg" aria-label="Ampliar prato raso"><img src="img/azul-raso.jpg" alt="Prato raso azul" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
+            <div class="item" data-color="blue" data-kind="dessert"><button class="pic" data-zoom-src="img/azul-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/azul-sobremesa.jpg" alt="Prato de sobremesa azul" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item wide" data-color="blue" data-kind="cup"><button class="pic" data-zoom-src="img/azul-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/azul-xicara.jpg" alt="Xícara com pires azul" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h3 class="group-title" data-i18n="group.embroidery">Bordados</h3>
+          <div class="items two">
+            <div class="item" data-color="blue" data-kind="placemat"><button class="pic" data-zoom-src="img/azul-jogo.jpg" aria-label="Ampliar jogo americano"><img src="img/azul-jogo.jpg" alt="Jogo americano bordado azul" loading="lazy"></button><h3 data-i18n="kind.placemat">Jogo americano</h3></div>
+            <div class="item" data-color="blue" data-kind="napkin"><button class="pic" data-zoom-src="img/azul-guardanapo.jpg" aria-label="Ampliar guardanapo bordado"><img src="img/azul-guardanapo.jpg" alt="Guardanapo bordado azul" loading="lazy"></button><h3 data-i18n="kind.napkin">Guardanapo bordado</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDE -->
+  <section class="collection c-green" id="verde">
+    <div class="c-head">
+      <p class="label" data-i18n="coll.label">Coleção</p>
+      <h2 data-i18n="coll.green">Verde</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="c-body">
+      <div class="photo"><img src="img/hero-verde.jpg" alt="Mesa posta com a coleção Verde de porcelana e bordados" data-i18n-alt="alt.hero.green" loading="lazy" data-zoom></div>
+      <div>
+        <div class="group">
+          <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
+          <div class="items">
+            <div class="item" data-color="green" data-kind="dinner"><button class="pic" data-zoom-src="img/verde-raso.jpg" aria-label="Ampliar prato raso"><img src="img/verde-raso.jpg" alt="Prato raso verde" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
+            <div class="item" data-color="green" data-kind="dessert"><button class="pic" data-zoom-src="img/verde-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/verde-sobremesa.jpg" alt="Prato de sobremesa verde" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item wide" data-color="green" data-kind="cup"><button class="pic" data-zoom-src="img/verde-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/verde-xicara.jpg" alt="Xícara com pires verde" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
+          </div>
+        </div>
+        <div class="group">
+          <h3 class="group-title" data-i18n="group.embroidery">Bordados</h3>
+          <div class="items two">
+            <div class="item" data-color="green" data-kind="placemat"><button class="pic" data-zoom-src="img/verde-jogo.jpg" aria-label="Ampliar jogo americano"><img src="img/verde-jogo.jpg" alt="Jogo americano bordado verde" loading="lazy"></button><h3 data-i18n="kind.placemat">Jogo americano</h3></div>
+            <div class="item" data-color="green" data-kind="napkin"><button class="pic" data-zoom-src="img/verde-guardanapo.jpg" aria-label="Ampliar guardanapo bordado"><img src="img/verde-guardanapo.jpg" alt="Guardanapo bordado verde" loading="lazy"></button><h3 data-i18n="kind.napkin">Guardanapo bordado</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img class="logo-c" src="logo-cream.png" alt="Milou Home" width="585" height="986">
+  <div class="contacts">
+    <a class="btn" href="https://www.instagram.com/milou_home/" target="_blank" rel="noopener">@milou_home</a>
+    <!-- Para ativar o botão de WhatsApp, preencha o número em WHATSAPP (script no fim da página) -->
+    <a class="btn" id="whatsapp" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+  </div>
+  <p class="copy">© <span id="ano">2026</span> Milou Home</p>
+</footer>
+
+<dialog class="zoom" id="zoom" aria-label="Imagem ampliada" data-i18n-aria="zoom.aria">
+  <form method="dialog"><button aria-label="Fechar" data-i18n-aria="zoom.close">×</button></form>
+  <img id="zoom-img" alt="">
+</dialog>
+
+<script>
+  // Número com DDI + DDD, só dígitos. Ex.: "5562999999999". Deixe vazio para esconder o botão.
+  const WHATSAPP = "";
+
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  /* ---------- Idiomas (PT é o texto original da página; EN fica aqui) ---------- */
+  const EN = {
+    "nav.about": "About us",
+    "nav.collections": "Collections",
+    "nav.aria": "Sections",
+    "brand.aria": "Milou Home, back to top",
+    "about.label1": "About us",
+    "about.label2": "What we do",
+    "about.p1": "The union of Camila and Luísa, two friends who share a passion for colors, prints, details and, of course, tableware, gave rise to Milou — a brand that brings all of these inspirations together in one place. The pieces are created from references that reflect the founders’ eye and style, as if designed for their own tables, making Milou <em>a true extension of who they are.</em>",
+    "about.p2": "We create table decoration pieces with attention to detail and the wish to turn simple moments into special experiences. We believe the table goes beyond function: it is <em>a space for gathering, affection and expression.</em> That is why we design each piece around the harmony of colors, prints and textures, uniting beauty and functionality.",
+    "coll.label": "Collection",
+    "coll.red": "Red",
+    "coll.blue": "Blue",
+    "coll.green": "Green",
+    "group.porcelain": "Porcelain",
+    "group.embroidery": "Embroidery",
+    "kind.dinner": "Dinner plate",
+    "kind.dessert": "Dessert plate",
+    "kind.cup": "Cup and saucer",
+    "kind.placemat": "Placemat",
+    "kind.napkin": "Embroidered napkin",
+    "alt.hero.red": "Table setting with the Red porcelain collection",
+    "alt.hero.blue": "Table setting with the Blue porcelain and embroidery collection",
+    "alt.hero.green": "Table setting with the Green porcelain and embroidery collection",
+    "zoom.aria": "Enlarged image",
+    "zoom.close": "Close",
+    "meta.desc": "Milou Home: porcelain and embroidery for the table.",
+    "wa.text": "Hello! I found you through the Milou Home website."
+  };
+  const ENUM = { red: "Red", blue: "Blue", green: "Green" };
+  const ENKIND = { dinner: "dinner plate", dessert: "dessert plate", cup: "cup and saucer", placemat: "embroidered placemat", napkin: "embroidered napkin" };
+  const PT_WA = "Olá! Vim pelo site da Milou Home.";
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  const PT = { "meta.desc": metaDesc ? metaDesc.content : "" };
+  const sel = "[data-i18n],[data-i18n-html],[data-i18n-alt],[data-i18n-aria],.item";
+
+  // guarda o texto original em português
+  document.querySelectorAll(sel).forEach(el => {
+    if (el.dataset.i18n) PT[el.dataset.i18n] = el.textContent;
+    if (el.dataset.i18nHtml) PT[el.dataset.i18nHtml] = el.innerHTML;
+    if (el.dataset.i18nAlt) PT[el.dataset.i18nAlt] = el.getAttribute("alt");
+    if (el.dataset.i18nAria) PT[el.dataset.i18nAria] = el.getAttribute("aria-label");
+  });
+  document.querySelectorAll(".item").forEach(it => {
+    const img = it.querySelector("img"), btn = it.querySelector(".pic");
+    it.dataset.ptAlt = img.alt; it.dataset.ptAria = btn.getAttribute("aria-label");
+  });
+
+  let lang = "pt";
+  function setLang(l) {
+    lang = l === "en" ? "en" : "pt";
+    const D = lang === "en" ? EN : PT;
+    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = D[el.dataset.i18n]; });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = D[el.dataset.i18nHtml]; });
+    document.querySelectorAll("[data-i18n-alt]").forEach(el => { el.alt = D[el.dataset.i18nAlt]; });
+    document.querySelectorAll("[data-i18n-aria]").forEach(el => { el.setAttribute("aria-label", D[el.dataset.i18nAria]); });
+    document.querySelectorAll(".item").forEach(it => {
+      const img = it.querySelector("img"), btn = it.querySelector(".pic");
+      if (lang === "en") {
+        const k = ENKIND[it.dataset.kind];
+        img.alt = ENUM[it.dataset.color] + " " + k;
+        btn.setAttribute("aria-label", "Enlarge " + k);
+      } else {
+        img.alt = it.dataset.ptAlt;
+        btn.setAttribute("aria-label", it.dataset.ptAria);
+      }
+    });
+    if (metaDesc) metaDesc.content = D["meta.desc"];
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    const w = document.getElementById("whatsapp");
+    if (WHATSAPP) {
+      w.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(lang === "en" ? EN["wa.text"] : PT_WA);
+      w.hidden = false;
+    }
+    try { localStorage.setItem("milou-lang", lang); } catch (e) {}
+  }
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+  let saved = null;
+  try { saved = localStorage.getItem("milou-lang"); } catch (e) {}
+  const initial = saved || ((navigator.language || "pt").toLowerCase().startsWith("en") ? "en" : "pt");
+  setLang(initial);
+
+  /* ---------- Ampliar imagens ---------- */
+  const dlg = document.getElementById("zoom");
+  const zimg = document.getElementById("zoom-img");
+  function openZoom(src, alt) {
+    zimg.src = src; zimg.alt = alt || "";
+    dlg.showModal();
+  }
+  document.querySelectorAll("[data-zoom-src]").forEach(b =>
+    b.addEventListener("click", () => openZoom(b.dataset.zoomSrc, b.querySelector("img").alt)));
+  document.querySelectorAll("img[data-zoom]").forEach(i =>
+    i.addEventListener("click", () => openZoom(i.src, i.alt)));
+  dlg.addEventListener("click", e => { if (e.target === dlg || e.target === zimg) dlg.close(); });
+</script>
+</body>
+</html>
