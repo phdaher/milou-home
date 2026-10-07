@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "milou-home",
+  "compatibility_date": "2026-09-01",
+  // Static site: everything in ./public is uploaded as-is.
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "routes": [
+    { "pattern": "milouhome.com", "custom_domain": true },
+    { "pattern": "www.milouhome.com", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}
