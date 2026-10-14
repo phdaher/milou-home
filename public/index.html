@@ -259,6 +259,9 @@
     text-transform: uppercase;
     color: var(--muted);
   }
+  /* Pratos: tamanhos proporcionais (raso 27 cm, sobremesa 21 cm) */
+  .item[data-kind="dinner"] .pic, .item[data-kind="dessert"] .pic { display: grid; place-items: center; aspect-ratio: 1 / 1; }
+  .item[data-kind="dinner"] img, .item[data-kind="dessert"] img { width: calc(var(--s, 1) * 100%); }
   .items.two .pic { aspect-ratio: 4 / 5; }
   .items.two .item img { width: 100%; height: 100%; object-fit: contain; }
   [hidden] { display: none !important; }
@@ -379,7 +382,7 @@
           <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
           <div class="items">
             <div class="item" data-color="red" data-kind="dinner"><button class="pic" data-zoom-src="img/vermelha-raso.jpg" aria-label="Ampliar prato raso"><img src="img/vermelha-raso.jpg" alt="Prato raso vermelho" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
-            <div class="item" data-color="red" data-kind="dessert"><button class="pic" data-zoom-src="img/vermelha-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/vermelha-sobremesa.jpg" alt="Prato de sobremesa vermelho" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item" data-color="red" data-kind="dessert" style="--s:.780"><button class="pic" data-zoom-src="img/vermelha-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/vermelha-sobremesa.jpg" alt="Prato de sobremesa vermelho" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
             <div class="item wide" data-color="red" data-kind="cup"><button class="pic" data-zoom-src="img/vermelha-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/vermelha-xicara.jpg" alt="Xícara com pires vermelha" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
           </div>
         </div>
@@ -401,7 +404,7 @@
           <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
           <div class="items">
             <div class="item" data-color="blue" data-kind="dinner"><button class="pic" data-zoom-src="img/azul-raso.jpg" aria-label="Ampliar prato raso"><img src="img/azul-raso.jpg" alt="Prato raso azul" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
-            <div class="item" data-color="blue" data-kind="dessert"><button class="pic" data-zoom-src="img/azul-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/azul-sobremesa.jpg" alt="Prato de sobremesa azul" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item" data-color="blue" data-kind="dessert" style="--s:.836"><button class="pic" data-zoom-src="img/azul-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/azul-sobremesa.jpg" alt="Prato de sobremesa azul" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
             <div class="item wide" data-color="blue" data-kind="cup"><button class="pic" data-zoom-src="img/azul-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/azul-xicara.jpg" alt="Xícara com pires azul" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
           </div>
         </div>
@@ -430,7 +433,7 @@
           <h3 class="group-title" data-i18n="group.porcelain">Porcelana</h3>
           <div class="items">
             <div class="item" data-color="green" data-kind="dinner"><button class="pic" data-zoom-src="img/verde-raso.jpg" aria-label="Ampliar prato raso"><img src="img/verde-raso.jpg" alt="Prato raso verde" loading="lazy"></button><h3 data-i18n="kind.dinner">Prato raso</h3><p class="spec">27 cm</p></div>
-            <div class="item" data-color="green" data-kind="dessert"><button class="pic" data-zoom-src="img/verde-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/verde-sobremesa.jpg" alt="Prato de sobremesa verde" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
+            <div class="item" data-color="green" data-kind="dessert" style="--s:.776"><button class="pic" data-zoom-src="img/verde-sobremesa.jpg" aria-label="Ampliar prato de sobremesa"><img src="img/verde-sobremesa.jpg" alt="Prato de sobremesa verde" loading="lazy"></button><h3 data-i18n="kind.dessert">Prato de sobremesa</h3><p class="spec">21 cm</p></div>
             <div class="item wide" data-color="green" data-kind="cup"><button class="pic" data-zoom-src="img/verde-xicara.jpg" aria-label="Ampliar xícara com pires"><img src="img/verde-xicara.jpg" alt="Xícara com pires verde" loading="lazy"></button><h3 data-i18n="kind.cup">Xícara com pires</h3><p class="spec">240 ml</p></div>
           </div>
         </div>
